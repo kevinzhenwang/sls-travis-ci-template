@@ -9,7 +9,6 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
       - ${SERVICE_PATH}/node_modules
 
   install:
-    - find . -name "*.sh" -print0 | xargs -0 chmod +x
     - pyenv global 3.7.1
     - pip install -U pip
     - pip install awscli

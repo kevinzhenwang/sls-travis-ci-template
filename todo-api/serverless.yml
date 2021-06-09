@@ -1,0 +1,20 @@
+service: todo-api
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  stackTags:
+    Name: rbac-api-todo
+    Owner: development-cog@ir.com
+    CostCenter: HO-RnD
+    Purpose: rbac
+    TenantID: shared
+    DynamoDbBackup: daily
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  region: us-west-2
+
+functions:
+  hello:
+    handler: handler.hello

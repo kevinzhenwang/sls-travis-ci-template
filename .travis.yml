@@ -19,6 +19,7 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
     - cd ${SERVICE_PATH}
     - serverless deploy -s ${STAGE_NAME}
     - cd -
+    - aws s3api list-buckets
 
 environments:
   - &PRODUCTION_ENV

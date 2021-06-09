@@ -9,6 +9,10 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
       - ${SERVICE_PATH}/node_modules
 
   install:
+    - find . -name "*.sh" -print0 | xargs -0 chmod +x
+    - pyenv global 3.7.1
+    - pip install -U pip
+    - pip install awscli
     - npm install -g serverless
     - travis_retry npm install
     - cd ${SERVICE_PATH}
@@ -16,9 +20,9 @@ deploy_service_job: &DEPLOY_SERVICE_JOB
     - cd -
 
   script:
-    - cd ${SERVICE_PATH}
-    - serverless deploy -s ${STAGE_NAME}
-    - cd -
+    # - cd ${SERVICE_PATH}
+    # - serverless deploy -s ${STAGE_NAME}
+    # - cd -
     - aws s3api list-buckets
 
 environments:
